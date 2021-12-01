@@ -43,6 +43,13 @@ public class BaseTest {
 	@BeforeMethod
 	protected void baseTestSetup() {
 		WebDriver driver = new FirefoxDriver();
+		FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        options.addArguments("--no-sandbox");
+        //options.addArguments("--disable-dev-shm-usage");
+        System.setProperty("webdriver.gecko.driver", BaseDir1 + 
+    "/drivers/geckodriver");
+        driver = new FirefoxDriver(options);
 		driver.manage().timeouts().implicitlyWait(testConfig.getImplicitTimeout(), TimeUnit.SECONDS);
 		driver.get(testConfig.getUrl());
 	}

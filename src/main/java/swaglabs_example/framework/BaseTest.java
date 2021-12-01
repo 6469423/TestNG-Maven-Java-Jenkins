@@ -41,7 +41,9 @@ public class BaseTest {
 	 */
 	@BeforeMethod
 	protected void baseTestSetup() {
-		System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
+		System.setProperty(
+			"webdriver.chrome.driver",
+			System.getProperty("user.dir") + testConfig.getChromedriverPath());
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(testConfig.getImplicitTimeout(), TimeUnit.SECONDS);
 		driver.get(testConfig.getUrl());

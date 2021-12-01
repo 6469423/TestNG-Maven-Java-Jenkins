@@ -1,7 +1,6 @@
 package swaglabs_example.framework;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.WebDriver;

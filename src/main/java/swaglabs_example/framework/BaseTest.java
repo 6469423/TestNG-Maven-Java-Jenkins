@@ -1,6 +1,7 @@
 package swaglabs_example.framework;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
@@ -56,16 +57,18 @@ public class BaseTest {
 	@BeforeMethod
 	protected void baseTestSetup() throws MalformedURLException {
         
-String URL = "https://www.saucedemo.com";
-String Node = "http://localhost:4444";
-DesiredCapabilities cap = DesiredCapabilities.chrome();
-//cap.setPlatform(Platform.WIN10);
+		ChromeOptions cap = new ChromeOptions(); 
+		cap.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
+		                  UnexpectedAlertBehaviour.IGNORE);
 
-driver = new RemoteWebDriver(new URL(Node), cap);
 
-driver.navigate().to(URL);
-Thread.sleep(5000);
-driver.quit();
+        String host = System.getProperty("seleniumHubHost");
+        
+        driver = new RemoteWebDriver(new URL("http://192.168.56.1:4444"), cap);
+        
+    
+			driver.manage().timeouts().implicitlyWait(testConfig.getImplicitTimeout(), TimeUnit.SECONDS);
+			driver.get(testConfig.getUrl());
 	}
 
 	/**

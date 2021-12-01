@@ -1,6 +1,8 @@
 package swaglabs_example.framework;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,6 +12,7 @@ import org.testng.annotations.BeforeTest;
 import swaglabs_example.data.TestScenario;
 
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.nio.charset.Charset;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -19,7 +22,16 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import java.net.MalformedURLException;
+import java.net.URL;
+ 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+ 
 /**
  * Common test functionality
  */
@@ -27,7 +39,7 @@ public class BaseTest {
 	private final String config = "config.properties";
 	private WebDriver driver;
 	private TestConfig testConfig;
-
+	
 	/**
 	 * Get test config
 	 */
@@ -40,13 +52,20 @@ public class BaseTest {
 	 * Setup Chrome driver and open URL
 	 */
 	@BeforeMethod
-	protected void baseTestSetup() {
-		System.setProperty(
-			"webdriver.chrome.driver",
-			System.getProperty("user.dir") + testConfig.getChromedriverPath());
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(testConfig.getImplicitTimeout(), TimeUnit.SECONDS);
-		driver.get(testConfig.getUrl());
+	protected void baseTestSetup() throws MalformedURLException {
+        
+        DesiredCapabilities dc = DesiredCapabilities.chrome();
+
+        if (System.getProperty("browser").equals("firefox"))
+            dc = DesiredCapabilities.firefox();
+
+        String host = System.getProperty("seleniumHubHost");
+        
+        driver = new RemoteWebDriver(new URL("http://" + host + ":4444/wd/hub"), dc);
+        
+    
+			driver.manage().timeouts().implicitlyWait(testConfig.getImplicitTimeout(), TimeUnit.SECONDS);
+			driver.get(testConfig.getUrl());
 	}
 
 	/**

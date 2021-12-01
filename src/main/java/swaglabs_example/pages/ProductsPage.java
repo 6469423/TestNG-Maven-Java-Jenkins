@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class ProductsPage extends BasePage {
 
-	@FindBy(css = ".product_label")
+	@FindBy(css = ".title")
 	private WebElement header;
 
 	private By product = By.cssSelector(".inventory_item");
@@ -23,7 +23,7 @@ public class ProductsPage extends BasePage {
 	private By productAddRemoveButton = By.cssSelector(".btn_inventory");
 
 	private final String ADD_TO_CART = "ADD TO CART";
-	private final String LABEL_PRODUCTS = "Products";
+	private final String Product_label = "PRODUCTS";
 
 	public ProductsPage(WebDriver driver, TestConfig testConfig) {
 		super(driver, testConfig);
@@ -37,7 +37,7 @@ public class ProductsPage extends BasePage {
 	 */
 	public boolean productHeaderExists() {
 		try {
-			return getHeaderLabel().equals(LABEL_PRODUCTS);
+			return getHeaderLabel().equals(Product_label);
 		} catch (Exception e) {
 			return false;
 		}

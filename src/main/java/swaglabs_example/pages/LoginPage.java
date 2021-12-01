@@ -24,8 +24,8 @@ public class LoginPage extends BasePage {
 	@FindBy(css = "h3[data-test='error']")
 	private WebElement errorMessage;
 
-	private final String ERROR_LOCKED_OUT = "Sorry, this user has been locked out.";
-	private final String ERROR_UNKNOWN_USER = "Username and password do not match any user in this service";
+	private final String ERROR_LOCKED_OUT = "Epic sadface: Sorry, this user has been locked out.";
+	private final String ERROR_UNKNOWN_USER = "Epic sadface: Username and password do not match any user in this service";
 
 	public LoginPage(WebDriver driver, TestConfig testConfig) {
 		super(driver, testConfig);

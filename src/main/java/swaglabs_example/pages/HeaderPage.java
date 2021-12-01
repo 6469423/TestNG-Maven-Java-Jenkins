@@ -12,7 +12,7 @@ import swaglabs_example.framework.TestConfig;
  */
 public class HeaderPage extends BasePage {
 
-	@FindBy(css = "svg[data-icon='shopping-cart']")
+	@FindBy(css = ".shopping_cart_link")
 	private WebElement cartIcon;
 
 	@FindBy(css = ".shopping_cart_badge")

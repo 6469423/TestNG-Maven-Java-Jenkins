@@ -15,13 +15,13 @@ import java.util.List;
  */
 public class CartPage extends BasePage {
 
-	@FindBy(css = ".subheader")
+	@FindBy(css = ".title")
 	private WebElement header;
 
 	private By item = By.cssSelector(".cart_item");
 	private By itemName = By.cssSelector(".cart_item_label > a > .inventory_item_name");
 
-	private final String LABEL_CART = "Your Cart";
+	private final String LABEL_CART = "YOUR CART";
 
 	public CartPage(WebDriver driver, TestConfig testConfig) {
 		super(driver, testConfig);

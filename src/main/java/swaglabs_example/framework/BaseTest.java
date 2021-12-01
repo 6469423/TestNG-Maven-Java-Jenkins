@@ -56,18 +56,16 @@ public class BaseTest {
 	@BeforeMethod
 	protected void baseTestSetup() throws MalformedURLException {
         
-		ChromeOptions cap = new ChromeOptions(); 
-		cap.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
-		                  UnexpectedAlertBehaviour.IGNORE);
+String URL = "https://www.saucedemo.com";
+String Node = "http://localhost:4444";
+DesiredCapabilities cap = DesiredCapabilities.chrome();
+//cap.setPlatform(Platform.WIN10);
 
+driver = new RemoteWebDriver(new URL(Node), cap);
 
-        String host = System.getProperty("seleniumHubHost");
-        
-        driver = new RemoteWebDriver(new URL("http://localhost:4444"), cap);
-        
-    
-			driver.manage().timeouts().implicitlyWait(testConfig.getImplicitTimeout(), TimeUnit.SECONDS);
-			driver.get(testConfig.getUrl());
+driver.navigate().to(URL);
+Thread.sleep(5000);
+driver.quit();
 	}
 
 	/**

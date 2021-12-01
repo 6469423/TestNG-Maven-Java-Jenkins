@@ -1,10 +1,13 @@
 package swaglabs_example.framework;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.apache.commons.io.IOUtils;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -23,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -53,14 +57,14 @@ public class BaseTest {
 	@BeforeMethod
 	protected void baseTestSetup() throws MalformedURLException {
         
-        DesiredCapabilities dc = DesiredCapabilities.chrome();
+		ChromeOptions cap = new ChromeOptions(); 
+		cap.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
+		                  UnexpectedAlertBehaviour.IGNORE);
 
-        if (System.getProperty("browser").equals("firefox"))
-            dc = DesiredCapabilities.firefox();
 
         String host = System.getProperty("seleniumHubHost");
         
-        driver = new RemoteWebDriver(new URL("http://" + host + ":4444/wd/hub"), dc);
+        driver = new RemoteWebDriver(new URL("http://" + host + ":4444/wd/hub"), cap);
         
     
 			driver.manage().timeouts().implicitlyWait(testConfig.getImplicitTimeout(), TimeUnit.SECONDS);

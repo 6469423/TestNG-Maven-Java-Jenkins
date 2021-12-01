@@ -3,6 +3,7 @@ package swaglabs_example.framework;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -41,8 +42,7 @@ public class BaseTest {
 	 */
 	@BeforeMethod
 	protected void baseTestSetup() {
-		System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
-		driver = new ChromeDriver();
+		WebDriver driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(testConfig.getImplicitTimeout(), TimeUnit.SECONDS);
 		driver.get(testConfig.getUrl());
 	}

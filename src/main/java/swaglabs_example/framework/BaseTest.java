@@ -1,7 +1,6 @@
 package swaglabs_example.framework;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
@@ -61,9 +60,9 @@ public class BaseTest {
 		                  UnexpectedAlertBehaviour.IGNORE);
 
 
-        String host = System.getProperty("seleniumHubHost");
+        String host = System.getProperty("selenium.hub.host", "localhost");
         
-        driver = new RemoteWebDriver(new URL("http://172.17.0.2:4444"), cap);
+        driver = new RemoteWebDriver(new URL("http://" + host + ":4444"), cap);
         
     
 			driver.manage().timeouts().implicitlyWait(testConfig.getImplicitTimeout(), TimeUnit.SECONDS);

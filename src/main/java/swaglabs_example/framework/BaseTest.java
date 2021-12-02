@@ -43,11 +43,26 @@ public class BaseTest {
 	 * Setup Chrome driver and open URL
 	 */
 	@BeforeMethod
+<<<<<<< Updated upstream
 	protected void baseTestSetup() {
 		System.setProperty(
 				"webdriver.chrome.driver",
 				System.getProperty("user.dir") + testConfig.getChromedriverPath());
 			driver = new ChromeDriver();
+=======
+	protected void baseTestSetup() throws MalformedURLException {
+        
+		ChromeOptions cap = new ChromeOptions(); 
+		cap.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
+		                  UnexpectedAlertBehaviour.IGNORE);
+
+
+        String host = System.getProperty("selenium.hub.host", "localhost");
+        
+        driver = new RemoteWebDriver(new URL("http://172.17.0.3:4444"), cap);
+        
+    
+>>>>>>> Stashed changes
 			driver.manage().timeouts().implicitlyWait(testConfig.getImplicitTimeout(), TimeUnit.SECONDS);
 			driver.get(testConfig.getUrl());
 	}

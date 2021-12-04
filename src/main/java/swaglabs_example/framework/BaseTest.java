@@ -62,7 +62,7 @@ public class BaseTest {
 
         String host = System.getProperty("selenium.hub.host", "localhost");
         
-        driver = new RemoteWebDriver(new URL("http://172.17.0.3:4444"), cap);
+        driver = new RemoteWebDriver(new URL("http://172.17.0.2:4444"), cap);
 //         driver = new RemoteWebDriver(new URL("http://" + host + ":4444"),        
     
 			driver.manage().timeouts().implicitlyWait(testConfig.getImplicitTimeout(), TimeUnit.SECONDS);

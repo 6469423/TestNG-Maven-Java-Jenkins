@@ -1,4 +1,4 @@
-package swaglabs_example.framework;
+package main;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

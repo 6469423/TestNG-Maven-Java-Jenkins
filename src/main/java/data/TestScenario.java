@@ -1,4 +1,4 @@
-package swaglabs_example.data;
+package data;
 
 import java.util.List;
 

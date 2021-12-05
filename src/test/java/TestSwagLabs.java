@@ -1,11 +1,12 @@
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import swaglabs_example.data.TestScenario;
-import swaglabs_example.framework.BaseTest;
-import swaglabs_example.pages.CartPage;
-import swaglabs_example.pages.HeaderPage;
-import swaglabs_example.pages.LoginPage;
-import swaglabs_example.pages.ProductsPage;
+
+import data.TestScenario;
+import main.BaseTest;
+import pages.CartPage;
+import pages.HeaderPage;
+import pages.LoginPage;
+import pages.ProductsPage;
 
 import java.util.List;
 

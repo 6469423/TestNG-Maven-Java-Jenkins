@@ -1,12 +1,13 @@
-package swaglabs_example.pages;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import swaglabs_example.framework.BasePage;
-import swaglabs_example.framework.TestConfig;
+
+import main.BasePage;
+import main.TestConfig;
 
 import java.util.List;
 
@@ -70,10 +71,10 @@ public class ProductsPage extends BasePage {
 	}
 
 	/**
-	 * Add product to shopping cart
+	 * Them san pham vao gio hang
 	 *
-	 * @param productName Name of product
-	 * @return True if added
+	 * @param productName Ten san pham
+	 * @return 
 	 */
 	public boolean addProductToCart(String productName) {
 		for (WebElement product : getProducts()) {
@@ -92,9 +93,9 @@ public class ProductsPage extends BasePage {
 	}
 
 	/**
-	 * Get list of all products
+	 * Danh sach san pham
 	 *
-	 * @return List of product elements
+	 * @return Danh sach elements cua cac san pham
 	 */
 	private List<WebElement> getProducts() {
 		return getDriver().findElements(product);

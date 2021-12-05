@@ -1,4 +1,4 @@
-package swaglabs_example.framework;
+package main;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,15 +1,16 @@
-package swaglabs_example.framework;
+package main;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import data.TestScenario;
+
 import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
-import swaglabs_example.data.TestScenario;
 
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -22,15 +23,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import java.net.MalformedURLException;
 import java.net.URL;
  
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
  
 /**
